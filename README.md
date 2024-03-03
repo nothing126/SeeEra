@@ -17,10 +17,10 @@
 <br />
 <div align="center">
   <a href="https://github.com/nothing126/">
-    <img src="https://github.com/nothing126/openaihub/" alt="Logo" width="300" height="300">
+    <img src="https://github.com/nothing126/SeeEra/blob/master/img/25686867444.png" alt="Logo" width="300" height="300">
   </a>
 
-  <h3 align="center">Dalle</h3>
+  <h3 align="center">SeeEra</h3>
   SeeEra - мы видим бесконечность искувсства 
   <p align="center">
     <br />
