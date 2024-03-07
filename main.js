@@ -10,7 +10,7 @@ import { oga } from "./oga.js";
 import { remove_file } from "./remove.js";
 import { RandN } from "./rand.js";
 import { code } from "telegraf/format";
-
+import fs from "fs";
 const bot = new Telegraf(tgKey);
 
 const INITIAL_SESSION = {
@@ -32,6 +32,7 @@ bot.command("start", async (ctx) => {
         [Markup.button.callback("Разговор с ChatGPT", "gpt")],
         [Markup.button.callback("Генерация картинок", "dalle")],
         [Markup.button.callback("голос в текст", "v2t")],
+        [Markup.button.callback("текст в голос", "tts")],
         [Markup.button.callback("информация", "info")],
       ]),
     );
@@ -43,7 +44,20 @@ bot.command("start", async (ctx) => {
         FILE: main.js}`);
   }
 });
-
+bot.action("tts", async (ctx) => {
+  ctx.session ??= INITIAL_SESSION;
+  try {
+    ctx.session.mode = "tts";
+    ctx.reply("Введите текст который хотите озвучить");
+  } catch (e) {
+    await ctx.reply("Что-то пошло не так");
+    await errToLogFile(`ERROR WHILE PROCESSING tts STATE: {
+       User: @${ctx.message.from.username} 
+        (${ctx.message.from.id}),
+        ERROR: ${e} , 
+        FILE: main.js}`);
+  }
+});
 bot.action("info", async (ctx) => {
   ctx.session ??= INITIAL_SESSION;
   try {
@@ -66,9 +80,10 @@ bot.action("info", async (ctx) => {
   } catch (e) {
     await ctx.reply("Что-то пошло не так");
     await errToLogFile(`ERROR WHILE PROCESSING INFO STATE: {
-        User: ${ctx.message.from.id}
-         ERROR: ${e} ,
-          FILE: main.js}`);
+       User: @${ctx.message.from.username} 
+        (${ctx.message.from.id}),
+        ERROR: ${e} , 
+        FILE: main.js}`);
   }
 });
 
@@ -144,6 +159,9 @@ bot.on(message("text"), async (ctx) => {
       case "v2t":
         await v2t_t(ctx);
         break;
+      case "tts":
+        await tts_t(ctx);
+        break;
 
       default:
         await ctx.reply(
@@ -175,6 +193,10 @@ bot.on(message("voice"), async (ctx) => {
 
       case "v2t":
         await v2t_v(ctx);
+        break;
+
+      case "tts":
+        await tts_v(ctx);
         break;
 
       default:
@@ -401,6 +423,58 @@ async function v2t_t(ctx) {
   }
 }
 
+async function tts_v(ctx) {
+  ctx.session ??= INITIAL_SESSION;
+  try {
+    ctx.reply(
+      "повторите попытку и отправьте ТЕКСТВОЕ сообщение",
+      Markup.inlineKeyboard([Markup.button.callback("Выйти", "exit")]),
+    );
+    await writeToLogFile(
+      `User: @${ctx.message.from.username} 
+            (${ctx.message.from.id}) make tts voice request`,
+    );
+  } catch (e) {
+    await ctx.reply("что то пошло не так, повторите попытку");
+    await errToLogFile(`ERROR IN tts VOICE REQUEST: {
+        User: @${ctx.message.from.username} 
+        (${ctx.message.from.id})        
+        ERROR: ${e} ,
+        FILE: main.js}`);
+  }
+}
+async function tts_t(ctx) {
+  ctx.session ??= INITIAL_SESSION;
+  try {
+    const waitingMessage = await ctx.reply("⏳");
+    await writeToLogFile(
+      `User: @${ctx.message.from.username} 
+            (${ctx.message.from.id}) make tts text request`,
+    );
+    await ctx.deleteMessage(waitingMessage.message_id);
+
+    const audioFilePath = await openai.tts(ctx.message.text);
+
+    // Читаем аудиофайл
+    const audioFile = fs.readFileSync(audioFilePath);
+    await ctx.deleteMessage(waitingMessage.message_id);
+    // Отправляем голосовое сообщение
+    await ctx.replyWithVoice({ source: audioFile });
+    ctx.reply(
+      "хотите выйти?",
+      Markup.inlineKeyboard([Markup.button.callback("Выйти", "exit")]),
+    );
+    await remove_file(audioFilePath);
+  } catch (e) {
+    await ctx.reply("что то пошло не так, повторите попытку");
+    await errToLogFile(`ERROR IN tts TEXT REQUEST: {
+        User: @${ctx.message.from.username} 
+        (${ctx.message.from.id})        
+        ERROR: ${e} ,
+        FILE: main.js}`);
+  }
+}
+
 bot.command("new", async (ctx) => {
   ctx.session ??= INITIAL_SESSION;
   try {
@@ -416,6 +490,8 @@ bot.command("new", async (ctx) => {
         [Markup.button.callback("Генерация картинок", "dalle")],
         [Markup.button.callback("анализ картинки", "vision")],
         [Markup.button.callback("голос в текст", "v2t")],
+        [Markup.button.callback("информация", "info")],
+        [Markup.button.callback("текст в голос", "tts")],
       ]),
     );
   } catch (e) {

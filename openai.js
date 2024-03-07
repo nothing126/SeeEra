@@ -1,8 +1,11 @@
 import OpenAIApi from "openai";
 import Configuration from "openai";
 import { createReadStream } from "fs";
-import { openaiKey } from "./config.js";
+import { openaiKey, voices_path } from "./config.js";
 import { errToLogFile } from "./errwriter.js";
+import path from "path";
+import fs from "fs";
+import { RandN } from "./rand.js";
 
 class openAI {
   roles = {
@@ -58,36 +61,18 @@ class openAI {
     }
   }
 
-  async gptvision(image_url, text) {
-    try {
-      const response = await this.openai.chat.completions.create({
-        model: "gpt-4-vision-preview",
-        messages: [
-          {
-            role: "user",
-            content: [
-              { type: "text", text: text },
-              {
-                type: "image_url",
-                image_url: {
-                  url: image_url,
-                  detail: "high",
-                },
-              },
-            ],
-          },
-        ],
-        max_tokens: 1500,
-      });
-      return response.choices[0];
-    } catch (e) {
-      await errToLogFile(
-        `error in analyzing img, ERROR: ${e}, FILE: openai.js`,
-      );
-    }
+  async tts(promt) {
+    const name = await RandN();
+    const speechFile = path.resolve(`${voices_path}\\${name}.mp3`);
+    const mp3 = await this.openai.audio.speech.create({
+      model: "tts-1",
+      voice: "alloy",
+      input: promt,
+    });
+    const buffer = Buffer.from(await mp3.arrayBuffer());
+    await fs.promises.writeFile(speechFile, buffer);
+    return speechFile;
   }
-
-
 }
 
 export const openai = new openAI(openaiKey);
