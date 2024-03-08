@@ -451,7 +451,6 @@ async function tts_t(ctx) {
       `User: @${ctx.message.from.username} 
             (${ctx.message.from.id}) make tts text request`,
     );
-    await ctx.deleteMessage(waitingMessage.message_id);
 
     const audioFilePath = await openai.tts(ctx.message.text);
 
@@ -516,6 +515,8 @@ bot.action("exit", async (ctx) => {
         [Markup.button.callback("Генерация картинок", "dalle")],
         [Markup.button.callback("анализ картинки", "vision")],
         [Markup.button.callback("голос в текст", "v2t")],
+        [Markup.button.callback("информация", "info")],
+        [Markup.button.callback("текст в голос", "tts")],
       ]),
     );
   } catch (e) {
