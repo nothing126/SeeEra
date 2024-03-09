@@ -22,9 +22,23 @@
 
   <h3 align="center">SeeEra</h3>
   SeeEra - мы видим бесконечность искувсства 
-  <p align="center">
+  <p align="center">![Uploading seeEraMenu.png…]()
+
     <br />
     <a href="https://t.me/Nonthing1571">Report Bug</a>
    
   </p>
 </div>
+
+# Проект
+
+Для получения информации по пректу рекомендуем ознакомиться с нашим [сайтом](https://masterpiese.kesug.com/)
+
+## Использование
+
+Для использования запустите бота используя команду "/start"
+
+<div align="center">
+  <a href="https://github.com/nothing126/">
+    <img src="https://github.com/nothing126/SeeEra/blob/master/img/25686867444.png"  width="350" height= "700">
+  </a>
