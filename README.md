@@ -90,11 +90,11 @@
 - Шинкарюк Матвей - разработка систем распознования голоса 
 - Дробка Татьяна - разработка документации
 
-[contributors-shield]:https://img.shields.io/github/contributors/nothing126/openaihub.svg?style=for-the-badge
-[contributors-url]: https://github.com/nothing126/openaihub/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/nothing126/openaihub.svg?style=for-the-badge
-[forks-url]:https://github.com/nothing126/openaihub/network/members
-[stars-shield]: https://img.shields.io/github/stars/nothing126/openaihub.svg?style=for-the-badge
-[stars-url]:https://github.com/nothing126/openaihub/stargazers
-[issues-shield]:https://img.shields.io/github/issues/nothing126/openaihub.svg?style=for-the-badge
-[issues-url]:https://github.com/nothing126/openaihub/issues
+[contributors-shield]:https://img.shields.io/github/contributors/nothing126/SeeEra.svg?style=for-the-badge
+[contributors-url]: https://github.com/nothing126/SeeEra/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/nothing126/SeeEra.svg?style=for-the-badge
+[forks-url]:https://github.com/nothing126/SeeEra/network/members
+[stars-shield]: https://img.shields.io/github/stars/nothing126/SeeEra.svg?style=for-the-badge
+[stars-url]:https://github.com/nothing126/SeeEra/stargazers
+[issues-shield]:https://img.shields.io/github/issues/nothing126/SeeEra.svg?style=for-the-badge
+[issues-url]:https://github.com/nothing126/SeeEra/issues
