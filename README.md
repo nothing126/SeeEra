@@ -3,7 +3,7 @@
     <img src="https://img.shields.io/github/contributors/nothing126/SeeEra.svg?style=for-the-badge" alt="Contributors">
   </a>
   <a href="https://github.com/nothing126/SeeEra/stargazers">
-    <img src="https://img.shields.io/github/stars/nothing126/SeeEra.svg?style=for-the-badge" alt="Stargazers">
+    <img src="https://img.shields.io/github/stars/nothing126/SeeEra.svg?style=for-the-badge" alt="stars-shield">
   </a>
   <a href="https://github.com/nothing126/SeeEra/issues">
     <img src="https://img.shields.io/github/issues/nothing126/SeeEra.svg?style=for-the-badge" alt="Issues">
