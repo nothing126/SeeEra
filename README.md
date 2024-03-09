@@ -1,15 +1,15 @@
 <div align="center">
-  <a href=" https://github.com/nothing126/openaihub/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/nothing126/openaihub.svg?style=for-the-badge" alt="Contributors">
+  <a href=" https://github.com/nothing126/SeeEra/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/nothing126/SeeEra.svg?style=for-the-badge" alt="Contributors">
   </a>
-  <a href="https://github.com/nothing126/openaihub/stargazers">
-    <img src="https://img.shields.io/github/stars/nothing126/openaihub.svg?style=for-the-badge" alt="Stargazers">
+  <a href="https://github.com/nothing126/SeeEra/stargazers">
+    <img src="https://img.shields.io/github/stars/nothing126/SeeEra.svg?style=for-the-badge" alt="Stargazers">
   </a>
-  <a href="https://github.com/nothing126/openaihub/issues">
-    <img src="https://img.shields.io/github/issues/nothing126/openaihub.svg?style=for-the-badge" alt="Issues">
+  <a href="https://github.com/nothing126/SeeEra/issues">
+    <img src="https://img.shields.io/github/issues/nothing126/SeeEra.svg?style=for-the-badge" alt="Issues">
   </a>
-  <a href="https://github.com/nothing126/openaihub/network/members">
-    <img src="https://img.shields.io/github/forks/nothing126/openaihub.svg?style=for-the-badge" alt="Forks">
+  <a href="https://github.com/nothing126/SeeEra/network/members">
+    <img src="https://img.shields.io/github/forks/nothing126/SeeEra.svg?style=for-the-badge" alt="Forks">
   </a>
 </div>
 
@@ -67,3 +67,34 @@
 * <a href="https://github.com/fluent-ffmpeg/node-fluent-ffmpeg">
     <img src="https://github.com/nothing126/openaihub/blob/master/img/ffmpeg.jpg" alt="axios bage" width="130" height="45">
   </a>
+
+# To Do
+
+Разработка включает в себя несколько этаапов, первый этап:
+
+1. перевести генерацию картинок на генеративную модель stable diffusion
+2. добавить мультиязычность в меню бота и прочих инструкциях
+3. Обновить документацию
+4. Расщирение функционала бота и создание мобильного приложения
+   - ВТОРОЙ ЭТАП
+1. разработка собственных генеративных моделей
+2. обустройство серверов для обучения генеративных моделей
+3. созданние лабораторного прототипа чипа с собственным искувтвенным интелектом
+4. тестировка чипа на человеке
+
+# разработчики
+- Колесов Борис - поиск информации и нужных генеративных моделей
+- Жигалко Богдан -  координация действий, разработка системы запросов
+- Аворничица Наталья - составление архитектуры кода
+- Пасечник Ростислав - разработка системы логирования
+- Шинкарюк Матвей - разработка систем распознования голоса 
+- Дробка Татьяна - разработка документации
+
+[contributors-shield]:https://img.shields.io/github/contributors/nothing126/openaihub.svg?style=for-the-badge
+[contributors-url]: https://github.com/nothing126/openaihub/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/nothing126/openaihub.svg?style=for-the-badge
+[forks-url]:https://github.com/nothing126/openaihub/network/members
+[stars-shield]: https://img.shields.io/github/stars/nothing126/openaihub.svg?style=for-the-badge
+[stars-url]:https://github.com/nothing126/openaihub/stargazers
+[issues-shield]:https://img.shields.io/github/issues/nothing126/openaihub.svg?style=for-the-badge
+[issues-url]:https://github.com/nothing126/openaihub/issues
