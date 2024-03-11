@@ -46,52 +46,65 @@
   Далее выберите нужный режим и следуйте инструкциям бота
 
 ## Технологии 
-   <div align="center">
+   <div align="start">
 * <a href="https://github.com/nodejs">
     <img src="https://github.com/nothing126/openaihub/blob/master/img/js.jpg" alt="axios bage" width="130" height="45">
   </a>
   
-  <div align="center">
+  <div align="start">
 * <a href="https://github.com/openai/openai-node">
     <img src="https://github.com/nothing126/openaihub/blob/master/img/openai.png" alt="axios bage" width="130" height="45">
   </a>
   
-  <div align="center">
+  <div align="start">
 * <a href="https://github.com/telegraf/telegraf">
     <img src="https://github.com/nothing126/openaihub/blob/master/img/telegraf1.png" alt="axios bage" width="60" height="60">
   </a>
   
-  <div align="center">
+  <div align="start">
 * <a href="https://github.com/axios/axios">
     <img src="https://github.com/nothing126/openaihub/blob/master/img/axios.png" alt="axios bage" width="130" height="45">
   </a>
   
-  <div align="center">
+  <div align="start">
 * <a href="https://github.com/fluent-ffmpeg/node-fluent-ffmpeg">
     <img src="https://github.com/nothing126/openaihub/blob/master/img/ffmpeg.jpg" alt="axios bage" width="130" height="45">
   </a>
 
 # To Do
-
+<div align="start">
 Разработка включает в себя несколько этаапов, первый этап:
 
 1. перевести генерацию картинок на генеративную модель stable diffusion
 2. добавить мультиязычность в меню бота и прочих инструкциях
 3. Обновить документацию
 4. Расщирение функционала бота и создание мобильного приложения
+   </div>
    - ВТОРОЙ ЭТАП
+   <div align="start">
 1. разработка собственных генеративных моделей
 2. обустройство серверов для обучения генеративных моделей
 3. созданние лабораторного прототипа чипа с собственным искувтвенным интелектом
 4. тестировка чипа на человеке
+</div>
 
-# разработчики
-- Колесов Борис - поиск информации и нужных генеративных моделей
-- Жигалко Богдан -  координация действий, разработка системы запросов
-- Аворничица Наталья - составление архитектуры кода
-- Пасечник Ростислав - разработка системы логирования
-- Шинкарюк Матвей - разработка систем распознования голоса 
-- Дробка Татьяна - разработка документации
+<div align="start">
+  
+  # Pазработчики
+
+1. Колесов Борис - поиск информации и нужных генеративных моделей
+  
+2. Жигалко Богдан -  координация действий, разработка системы запросов
+   
+3. Аворничица Наталья - составление архитектуры кода
+
+4. Пасечник Ростислав - разработка системы логирования
+
+5. Шинкарюк Матвей - разработка систем распознования голоса
+ 
+6. Дробка Татьяна - разработка документации
+    
+</div>
 
 [contributors-shield]:https://img.shields.io/github/contributors/nothing126/SeeEra.svg?style=for-the-badge
 [contributors-url]: https://github.com/nothing126/SeeEra/graphs/contributors
