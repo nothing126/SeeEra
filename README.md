@@ -36,10 +36,13 @@
 
 Для использования запустите бота используя команду "/start"
 
-<div align="center">
+
+<div align="start">
   <a href="https://github.com/nothing126/SeeEra/blob/master/img/seeEraMenu.png">
     <img src="https://github.com/nothing126/SeeEra/blob/master/img/seeEraMenu.png"  width="500" height= "700">
   </a>
+
+
   Далее выберите нужный режим и следуйте инструкциям бота
 
 ## Технологии 
