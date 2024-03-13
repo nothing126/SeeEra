@@ -65,7 +65,7 @@ class openAI {
     const name = await RandN();
     const speechFile = path.resolve(`${voices_path}\\${name}.mp3`);
     const mp3 = await this.openai.audio.speech.create({
-      model: "tts-1",
+      model: "tts-1-hd",
       voice: "alloy",
       input: promt,
     });

@@ -67,12 +67,13 @@ bot.action("info", async (ctx) => {
     ctx.session.mode = "info";
     await ctx.deleteMessage(waitingMessage.message_id);
     await ctx.reply(
-      "Вас приветствует чат бот с исскувственным интелектом SeeEraAI. Он позволит вам использовать последнюю версию chat-GPT-4 для генерации и работы с текстом, " +
-        "а также анализа картинок с последующим ответом на интересующие вас вопросы. Также бот позволяет генерировать картинки с помощью новейшей генеративной " +
+      "Вас приветствует чат бот с исскувственным интелектом SeeEraAI. Он позволит вам использовать последнюю версию chat-GPT-4-Turbo для генерации и работы с текстом, " +
+        "Также бот позволяет генерировать картинки с помощью новейшей генеративной " +
         "модели Dall-e-3, что обеспечивает высокую чувствительность к деталям и высокое качество изображений. Кроме этого бот может анализировать голосовые сообщения " +
-        "и переводить их в текст используя whisper-1 благодаря которому бот способен понимать свыше сотни языков в числе которых русский, английскй и прочие. Все запросы " +
-        "бот может принимать как в текстовом так и в аудио формате, что упрощает взаимодействие со свеми необходимыми функциями. Для более подробной информации рекомендую " +
-        "перейти на github репозиторий проекта: https://github.com/nothing126/openaihub там вы найдете все использованные технологии исходный код и прочее." +
+        "и переводить их в текст используя whisper-1 благодаря которому бот способен понимать свыше сотни языков в числе которых русский, английскй, румынский и прочие. Все запросы " +
+        "бот может принимать как в текстовом так и в аудио формате, что упрощает взаимодействие со свеми необходимыми функциями.Для перевода текста в голос мы используем модель от openai под названием tts-1-hd" +
+        " Для более подробной информации рекомендую " +
+        "перейти на github репозиторий проекта: https://github.com/nothing126/SeeEra там вы найдете все использованные технологии исходный код и прочее." +
         "Для использования бота нужно выйти с этого режима используя кнопку внизу, а далее выберите режим" +
         "Для связи с администратором обращайтесь на email forgptjs12@gmail.com",
       Markup.inlineKeyboard([Markup.button.callback("Выйти", "exit")]),
@@ -312,10 +313,10 @@ async function dalle_t(ctx) {
     await ctx.replyWithDocument({ source: image_path });
     await ctx.deleteMessage(waitingMessage.message_id);
 
-    ctx.reply("следующая генерация доступна через минуту");
+    ctx.reply("Следующая генерация доступна через минуту");
 
     ctx.reply(
-      "хотите выйти?",
+      "Хотите выйти?",
       Markup.inlineKeyboard([Markup.button.callback("Выйти", "exit")]),
     );
     await remove_file(image_path);
@@ -345,16 +346,16 @@ async function dalle_v(ctx) {
     const mp3Path = await oga.toMp3(ogaPath, filename);
     const text = await openai.transcription(mp3Path);
 
-    await ctx.reply(code(`ваш запрос: ${text}`));
+    await ctx.reply(code(`Ваш запрос: ${text}`));
 
     const url = await openai.dalle(String(text));
     const image_path = await downloadImage(url, filename);
     await ctx.replyWithDocument({ source: image_path });
     await ctx.deleteMessage(waitingMessage.message_id);
-    ctx.reply("следующая генерация доступна через минуту");
+    ctx.reply("Следующая генерация доступна через минуту");
 
     ctx.reply(
-      "хотите выйти?",
+      "Хотите выйти?",
       Markup.inlineKeyboard([Markup.button.callback("Выйти", "exit")]),
     );
     await remove_file(image_path);
@@ -376,7 +377,7 @@ async function v2t_v(ctx) {
     await writeToLogFile(`User: @${ctx.message.from.username}
          (${ctx.message.from.id}) make v2t voice request`);
 
-    await ctx.reply("отправьте или перешлите голосовое сообщение");
+    await ctx.reply("Отправьте или перешлите голосовое сообщение");
     const waitingMessage = await ctx.reply("⏳");
 
     const link = await ctx.telegram.getFileLink(ctx.message.voice.file_id);
@@ -386,12 +387,12 @@ async function v2t_v(ctx) {
     const text = await openai.transcription(mp3Path);
     await ctx.deleteMessage(waitingMessage.message_id);
     await ctx.reply(
-      `текст сообщения: ${text}`,
+      `Текст сообщения: ${text}`,
       Markup.inlineKeyboard([Markup.button.callback("Выйти", "exit")]),
     );
     await remove_file(mp3Path);
   } catch (e) {
-    await ctx.reply("что то пошло не так, повторите попытку");
+    await ctx.reply("Что то пошло не так, повторите попытку");
     await errToLogFile(`ERROR IN V2T VOICE REQUEST: {
             User: @${ctx.message.from.username} 
             (${ctx.message.from.id}),
@@ -409,12 +410,12 @@ async function v2t_t(ctx) {
 
     const waitingMessage = await ctx.reply("⏳");
     ctx.reply(
-      "отправьте или перешлите голосовое сообщение",
+      "Отправьте или перешлите голосовое сообщение",
       Markup.inlineKeyboard([Markup.button.callback("Выйти", "exit")]),
     );
     await ctx.deleteMessage(waitingMessage.message_id);
   } catch (e) {
-    await ctx.reply("что то пошло не так, повторите попытку");
+    await ctx.reply("Что то пошло не так, повторите попытку");
     await errToLogFile(`ERROR IN V2T TEXT REQUEST: {
         User: @${ctx.message.from.username} 
         (${ctx.message.from.id})        
@@ -427,7 +428,7 @@ async function tts_v(ctx) {
   ctx.session ??= INITIAL_SESSION;
   try {
     ctx.reply(
-      "повторите попытку и отправьте ТЕКСТВОЕ сообщение",
+      "Повторите попытку и отправьте ТЕКСТВОЕ сообщение",
       Markup.inlineKeyboard([Markup.button.callback("Выйти", "exit")]),
     );
     await writeToLogFile(
@@ -460,12 +461,12 @@ async function tts_t(ctx) {
     // Отправляем голосовое сообщение
     await ctx.replyWithVoice({ source: audioFile });
     ctx.reply(
-      "хотите выйти?",
+      "Хотите выйти?",
       Markup.inlineKeyboard([Markup.button.callback("Выйти", "exit")]),
     );
     await remove_file(audioFilePath);
   } catch (e) {
-    await ctx.reply("что то пошло не так, повторите попытку");
+    await ctx.reply("Что то пошло не так, повторите попытку");
     await errToLogFile(`ERROR IN tts TEXT REQUEST: {
         User: @${ctx.message.from.username} 
         (${ctx.message.from.id})        
@@ -494,9 +495,7 @@ bot.command("new", async (ctx) => {
       ]),
     );
   } catch (e) {
-    await ctx.reply(
-      "вы не авторизованы, повторите попытку или свяжитесь с администратором email forgptjs12@gmail.com ",
-    );
+    await ctx.reply("Что то пошло не так, повторите попытку");
     await errToLogFile(`ERROR WHILE START COMMAND: {
         User: @${ctx.message.from.username} 
         (${ctx.message.from.id})       
